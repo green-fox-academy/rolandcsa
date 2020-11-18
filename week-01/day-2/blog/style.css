@@ -1,0 +1,58 @@
+body {
+    font-family: 'Courier New', Courier, monospace;
+    background-image: url(background.jpg);
+    
+}
+
+header {
+    background-color: lightgreen;
+    font-size: 25px;
+    font-weight: bold;
+    padding: 15px;
+    border: 1px black solid;
+    text-align: center;
+}
+
+#new-post a {
+    color: orange;
+    font-size: 18px;
+}
+
+h2 {
+    font-size: 15px;
+    padding: 10px 0px 0px 0px;
+}
+
+#new-post {
+    padding: 20px 0px 0px 0px;
+}
+
+input {
+    width: 300px;
+}
+
+.post {
+    border: 1px orange solid;
+    margin: 0px 0px 20px 0px;
+}
+
+.posts {
+    padding: 40px 0px 0px 0px;
+}
+
+textarea {
+    width: 300px;
+}
+
+main {
+    padding: 5%;
+}
+
+h3 {
+    font-size: 14px;
+}
+
+button {
+    border-radius: 15px;
+    width: 100px;
+}

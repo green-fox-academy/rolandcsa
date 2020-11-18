@@ -1,0 +1,61 @@
+body {
+    background-image: url(assets/background.png);
+    background-position: center center;
+    background-size: 100% 100%;
+    font-family: 'Courier New', Courier, monospace;
+    padding-left: 10%;
+    padding-right: 10%;
+
+}
+
+#navigation {
+    text-align: right;
+    background-color: lightgreen;
+    float: right;
+    width: 50%;
+    height: 64px;
+
+}
+
+#logo {
+
+    background-color: lightgreen;
+    float: left;
+    width: 50%;
+    height: 64px;
+
+}
+
+a {
+    color: magenta;
+    line-height: 64px;
+    font-size: 30px;
+    padding-left: 15px;
+    padding-right: 15px;
+
+}
+
+dt {
+    padding: 30px;
+    font-size: 20px;
+    font-weight: bold;
+
+}
+
+dd {
+    font-style: italic;
+    font-size: 16px;
+
+}
+
+#wiki {
+    text-align: center;         
+    padding: 30px;
+}
+
+#greeting {
+    padding-top: 90px;
+    padding-right: 30px;
+    padding-left: 30px;
+
+}
