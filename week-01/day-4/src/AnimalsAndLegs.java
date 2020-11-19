@@ -4,11 +4,10 @@ public class AnimalsAndLegs {
     public static void main(String[] args) {
 
         System.out.println("How many chickens do you have?");
-        Scanner chickens = new Scanner(System.in);
+        Scanner animalNumber = new Scanner(System.in);
+        int chickenLegs = animalNumber.nextInt() * 2;
         System.out.println("How many pigs do you have?");
-        Scanner pigs = new Scanner(System.in);
-        int chickenLegs = chickens.nextInt() * 2;
-        int pigLegs = chickens.nextInt() * 4;
+        int pigLegs = animalNumber.nextInt() * 4;
         int sumLegs = chickenLegs + pigLegs;
 
 
