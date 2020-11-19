@@ -2,11 +2,11 @@ public class Swap {
     public static void main(String[] args) {
         int a = 123;
         int b = 526;
-        int temp;
+        int c;
 
-        temp = a;
+        c = a;
         a = b;
-        b = temp;
+        b = c;
 
 
         System.out.println(a);
