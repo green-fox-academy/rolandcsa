@@ -7,7 +7,7 @@ public class MileToKmConverter {
         Scanner input = new Scanner(System.in);
         double miles = input.nextDouble();
         double km = miles * 1.609344;
-        System.out.printf("That is " + km + " kilometres.");
+        System.out.println("That is " + km + " kilometres.");
 
     }
 
