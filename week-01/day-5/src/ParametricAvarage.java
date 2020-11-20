@@ -15,12 +15,15 @@ public class ParametricAvarage {
         int numberOfNumbers = input.nextInt();
 
         int sum = 0;
+        double avarage = 0;
         for (int b = 0; b < numberOfNumbers; b++) {
             System.out.println("Enter your numbers");
             int num = input.nextInt();
             sum = sum + num;
         }
+        avarage = (double)sum / numberOfNumbers;
         System.out.println(sum);
+        System.out.println(avarage);
 
     }
 }
