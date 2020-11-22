@@ -17,12 +17,33 @@ public class DrawPyramid {
         Scanner input = new Scanner(System.in);
         int row = input.nextInt();
 
-        for (int i = 1; i <= row; i++) {
-            for (int space = 1; space <= i; space++) {
-
-//                Not finished
-
+        int i = 1;
+        while (i <= row) {
+            int space = 1;
+            while (space <= row - i + 1) {
+                System.out.print(" ");
+                space++;
             }
+            int star = 1;
+            while (star <= i * 2 - 1) {
+                System.out.print("*");
+                star++;
+            }
+            System.out.println("");
+            i++;
         }
+
+
+//        for (int i = 1; i <= row; i++) {
+//            for (int space = 1; space <= row - i + 1; space++) {
+//                System.out.print(" ");
+//
+//
+//            }
+//            for (int star = 1; star <= i * 2 - 1; star++) {
+//                System.out.print("*");
+//            }
+//            System.out.println("");
+//        }
     }
 }
