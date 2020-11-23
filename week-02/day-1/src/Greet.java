@@ -8,14 +8,18 @@
 
 import java.util.Scanner;
 
-//public class Greet {
-//
-////    public static greet() {
-//        String al = "Green Fox";
-////        System.out.println("What is your name?");
-//    }
-//
-////    public static void main(String[] args) {
+public class Greet {
 
-//    }
-//}
+    public static void greet() {
+        String al = "Green Fox";
+        System.out.println("What is your name?");
+        Scanner input = new Scanner(System.in);
+        String name = input.next();
+        System.out.println("Greetings " + name + ", " + al);
+
+    }
+
+    public static void main(String[] args) {
+        greet();
+    }
+}
