@@ -6,16 +6,25 @@ import java.util.Scanner;
 
 public class Doubling {
 
-    public static void doubling() {
-        int baseNum = 123;
+    public static int doubling() {
+        System.out.println("Enter a number!");
+        Scanner input = new Scanner(System.in);
+        int number = input.nextInt();
+        number = number * 2;
+        System.out.println(number);
+
+
+        return number;
+    }
+
+    public static int doubling2(int baseNum) {
         baseNum = baseNum * 2;
-        System.out.println(baseNum);
-
-
+        return baseNum;
     }
 
     public static void main(String[] args) {
         int baseNum = 123;
         doubling();
+        System.out.println(doubling2(baseNum));
     }
 }
