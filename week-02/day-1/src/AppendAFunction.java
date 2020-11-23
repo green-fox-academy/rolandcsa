@@ -7,8 +7,6 @@
 //
 // - Print the result of `appendAFunc(typo)`
 
-import java.util.Scanner;
-
 public class AppendAFunction {
 
     public static String appendAFunction(String word) {
