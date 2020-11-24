@@ -30,12 +30,18 @@ public class ListIntroduction2 {
         B.remove("Durian");
         A.add(3, "Kiwifruit");
 
-        System.out.println(A.indexOf("Avocado"));
-        System.out.println(B.indexOf("Durian"));
+        if (A.size() > B.size()) {
+            System.out.println("A list is bigger than B list");
+        } else {
+            System.out.println("A list is not bigger than B list");
 
-        B.addAll(Arrays.asList("Passion Fruit", "Pomelo"));
-        System.out.println(B);
+            System.out.println(A.indexOf("Avocado"));
+            System.out.println(B.indexOf("Durian"));
 
-        System.out.println(A.get(2));
+            B.addAll(Arrays.asList("Passion Fruit", "Pomelo"));
+            System.out.println(B);
+
+            System.out.println(A.get(2));
+        }
     }
 }
