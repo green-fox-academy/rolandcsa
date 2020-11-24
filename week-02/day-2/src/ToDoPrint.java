@@ -21,13 +21,13 @@ public class ToDoPrint {
         String todoText = " - Buy milk\n";
         String beginning = "My todo:";
         String ending = " - Download games";
-        String ending2 = "\n - Diablo";
+        String ending2 = "- Diablo";
         beginning = beginning.concat("\n");
+        String tab = "\t";
+        String enter = "\n";
 
-        todoText = beginning + todoText + ending + ending2;
+        todoText = beginning + todoText + ending + enter + tab + ending2;
 
         System.out.println(todoText);
-
-//        Not finished
     }
 }
