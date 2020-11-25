@@ -16,7 +16,7 @@ public class CenterBoxFunction {
 
         for (int i = 0; i < 3; i++) {
             Scanner scanner = new Scanner(System.in);
-            System.out.println("Add the size of the square!");
+            System.out.println("Enter the size of the square!");
             int size = scanner.nextInt();
             graphics.setColor(Color.BLUE);
             graphics.drawRect(WIDTH / 2 - size / 2, HEIGHT / 2 - size / 2, size, size);
