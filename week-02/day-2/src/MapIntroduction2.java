@@ -34,6 +34,18 @@ public class MapIntroduction2 {
         isbn.put("978-1-60309-444-3", "Red Panda and Moon Bear");
         isbn.put("978-1-60309-461-0", "The Lab");
 
-//        Not finished
+        for (String number : isbn.keySet()) {
+            String title = isbn.get(number);
+            System.out.println(title + " (ISBN: " + number + ")");
+        }
+        isbn.remove("978-1-60309-444-3");
+        isbn.values().remove("The Lab");
+
+        isbn.put("978-1-60309-450-4", "They Called Us Enemy");
+        isbn.put("978-1-60309-453-5", "Why Did We Trust Him?");
+
+        System.out.println(isbn.containsKey("478-0-61159-424-8"));
+        System.out.println(isbn.get("978-1-60309-453-5"));
+
     }
 }
