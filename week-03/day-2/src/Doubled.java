@@ -22,10 +22,9 @@ public class Doubled {
         try {
             Path filePath = Paths.get("src/doubled.txt");
             List<String> lines = Files.readAllLines(filePath);
-            String sentence;
 
             for (String line : lines) {
-                sentence = "";
+                String sentence = "";
                 for (int i = 0; i < line.length() - 1; i += 2) {
                     sentence = sentence + String.valueOf(line.charAt(i));
                 }
