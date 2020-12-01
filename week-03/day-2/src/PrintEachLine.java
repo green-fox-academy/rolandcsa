@@ -21,7 +21,7 @@ import java.util.List;
 public class PrintEachLine {
     public static void main(String[] args) {
         try {
-            Path path = Paths.get("my-file.txt");
+            Path path = Paths.get("src/my-file.txt");
             List<String> lines = Files.readAllLines(path);
             System.out.println(lines);
         } catch (IOException e) {
