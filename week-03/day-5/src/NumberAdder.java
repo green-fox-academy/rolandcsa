@@ -3,13 +3,14 @@
 
 public class NumberAdder {
     public static void main(String[] args) {
-        numberAdder(3);
+        int k = numberAdder(3);
+        System.out.println(k);
     }
 
-    public static void numberAdder(int n) {
-        if (n > 1) {
-            numberAdder(n - 1);
+    public static int numberAdder(int n) {
+        if (n == 1) {
+            return n;
         }
-        System.out.println(n);
+        return numberAdder(n - 1) + n;
     }
 }
