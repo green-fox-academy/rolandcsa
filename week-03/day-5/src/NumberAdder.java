@@ -3,8 +3,8 @@
 
 public class NumberAdder {
     public static void main(String[] args) {
-        int k = numberAdder(3);
-        System.out.println(k);
+        int sum = numberAdder(3);
+        System.out.println(sum);
     }
 
     public static int numberAdder(int n) {
