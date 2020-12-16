@@ -9,11 +9,11 @@ public class Poker {
         Hand player3 = new Hand("player3");
         player1.generateHand();
         player2.generateHand();
-        player3.getHand().add(new Card('A', 'S'));
-        player3.getHand().add(new Card('2', 'S'));
-        player3.getHand().add(new Card('3', 'S'));
-        player3.getHand().add(new Card('4', 'S'));
-        player3.getHand().add(new Card('5', 'S'));
+        player3.getHand().add(new Card('T', 'S'));
+        player3.getHand().add(new Card('A', 'D'));
+        player3.getHand().add(new Card('A', 'H'));
+        player3.getHand().add(new Card('A', 'C'));
+        player3.getHand().add(new Card('A', 'C'));
 
         System.out.println(player1.printHand());
         System.out.println(player2.printHand());
@@ -21,5 +21,8 @@ public class Poker {
         System.out.println(HandStrength.isFlush(player3));
         System.out.println(HandStrength.isStraight(player3));
         System.out.println(HandStrength.isStraightFlush(player3));
+        System.out.println(HandStrength.isFourOfAKind(player3));
+        System.out.println(HandStrength.isThreeOfAKind(player3));
+        System.out.println(HandStrength.isPair(player3));
     }
 }
