@@ -7,13 +7,15 @@ public class Poker {
         Hand player1 = new Hand("player1");
         Hand player2 = new Hand("player2");
         Hand player3 = new Hand("player3");
-        player1.generateHand();
-        player2.generateHand();
-        player3.getHand().add(new Card('T', 'S'));
+        Hand player4 = new Hand("player4");
+        player1.generateHand(deck);
+        player2.generateHand(deck);
+        player4.generateHand(deck);
+        player3.getHand().add(new Card('A', 'C'));
         player3.getHand().add(new Card('A', 'D'));
         player3.getHand().add(new Card('A', 'H'));
-        player3.getHand().add(new Card('A', 'C'));
-        player3.getHand().add(new Card('A', 'C'));
+        player3.getHand().add(new Card('7', 'S'));
+        player3.getHand().add(new Card('A', 'S'));
 
         System.out.println(player1.printHand());
         System.out.println(player2.printHand());

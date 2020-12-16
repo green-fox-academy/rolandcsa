@@ -1,5 +1,8 @@
 package poker;
 
+import java.util.Collections;
+import java.util.HashMap;
+
 public class HandStrength {
     public static boolean isFlush(Hand hand) {
         int heartCounter = 0;
@@ -21,56 +24,63 @@ public class HandStrength {
     }
 
     public static boolean isStraight(Hand hand) {
-        int rankSum = 0;
-        for (Card card : hand.getHand()) {
-            rankSum += card.getRank();
-        }
-        int highestRank = 0;
-        for (int i = 0; i < hand.getHand().size(); i++) {
-            if (hand.getHand().get(i).getRank() > highestRank) {
-                highestRank = hand.getHand().get(i).getRank();
+        Collections.sort(hand.getHand());
+        for (int i = 0; i < 4; i++) {
+            if (hand.getHand().get(i).getRank() + 1 != hand.getHand().get(i + 1).getRank()) {
+                return false;
             }
         }
-        if (rankSum == 15 && highestRank == 5) {
-            return true;
-        } else if (rankSum == 20 && highestRank == 6) {
-            return true;
-        } else if (rankSum == 25 && highestRank == 7) {
-            return true;
-        } else if (rankSum == 30 && highestRank == 8) {
-            return true;
-        } else if (rankSum == 35 && highestRank == 9) {
-            return true;
-        } else if (rankSum == 40 && highestRank == 10) {
-            return true;
-        } else if (rankSum == 45 && highestRank == 11) {
-            return true;
-        } else if (rankSum == 50 && highestRank == 12) {
-            return true;
-        } else if (rankSum == 55 && highestRank == 13) {
-            return true;
-        } else return rankSum == 23 && highestRank == 13;
+        return true;
     }
 
     public static boolean isStraightFlush(Hand hand) {
         return isFlush(hand) && isStraight(hand);
     }
 
-    public static boolean isFourOfAKind(Hand hand) {
-        int counter = 0;
+    private static HashMap<Integer, Integer> countCard(Hand hand) {
+        HashMap<Integer, Integer> cardCount = new HashMap<>();
+
         for (int i = 0; i < hand.getHand().size(); i++) {
-            for (int j = 0; j < i - j ; j++) {
-                if (hand.getHand().get(i).getName() == hand.getHand().get(j).getName()) {
-                    counter++;
-                }
+            Card currentCard = hand.getHand().get(i);
+            if (cardCount.containsKey(currentCard.getRank())) {
+                int occurrences = cardCount.get(currentCard.getRank());
+                cardCount.put(currentCard.getRank(), occurrences + 1);
+            } else {
+                cardCount.put(currentCard.getRank(), 1);
+            }
+
+        }
+        return cardCount;
+    }
+
+    public static boolean isFourOfAKind(Hand hand) {
+        HashMap<Integer, Integer> cardCount = countCard(hand);
+        for (Integer entry : cardCount.values()) {
+            if (entry == 4) {
+                return true;
             }
         }
-        return counter == 4;
+        return false;
     }
+
+
+//
+//
+//                int counter=0;
+//                for(int i=0;i<hand.getHand().size();i++){
+//        for(int j=0;j<i -j;j++){
+//        if(hand.getHand().get(i).getName()==hand.getHand().get(j).getName()){
+//        counter++;
+//        }
+//        }
+//        }
+//        return counter==4;
+//        }
+
     public static boolean isThreeOfAKind(Hand hand) {
         int counter = 0;
         for (int i = 0; i < hand.getHand().size(); i++) {
-            for (int j = 0; j < i - j ; j++) {
+            for (int j = 0; j < i - j; j++) {
                 if (hand.getHand().get(i).getName() == hand.getHand().get(j).getName()) {
                     counter++;
                 }
@@ -78,10 +88,11 @@ public class HandStrength {
         }
         return counter == 3;
     }
+
     public static boolean isPair(Hand hand) {
         int counter = 0;
         for (int i = 0; i < hand.getHand().size(); i++) {
-            for (int j = 0; j < i - j ; j++) {
+            for (int j = 0; j < i - j; j++) {
                 if (hand.getHand().get(i).getName() == hand.getHand().get(j).getName()) {
                     counter++;
                 }
