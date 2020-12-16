@@ -2,12 +2,12 @@ package poker;
 
 public class Card {
     private final Character name;
-    private final Character color;
+    private final Character suit;
     private Integer rank;
 
     public Card(char name, char color) {
         this.name = name;
-        this.color = color;
+        this.suit = color;
         if (name == '2') {
             rank = 1;
         } else if (name == '3') {
@@ -41,8 +41,8 @@ public class Card {
         return name;
     }
 
-    public Character getColor() {
-        return color;
+    public Character getSuit() {
+        return suit;
     }
 
     public Integer getRank() {
