@@ -8,7 +8,6 @@ import java.util.List;
 public class Hand {
     private final String playerName;
     private final List<Card> hand = new ArrayList<>();
-    private final HashMap<Integer, Integer> sameCardRankCount = countSameCardRank();
 
     public Hand(String playerName) {
         this.playerName = playerName;
@@ -32,7 +31,9 @@ public class Hand {
     }
 
     public String printHand() {
-        StringBuilder result = new StringBuilder(" [ ");
+        StringBuilder result = new StringBuilder();
+        result.append(playerName);
+        result.append(" [ ");
 
         for (Card card : hand) {
             result.append(card.getName());
@@ -41,7 +42,73 @@ public class Hand {
         }
         result.deleteCharAt(result.length() - 2);
         result.append("]");
+
+        if (isStraightFlush()) {
+            result.append(" Straight flush");
+        } else if (isFourOfAKind()) {
+            result.append(" Four of a kind");
+        } else if (isFullHouse()) {
+            result.append(" Full house");
+        } else if (isFlush()) {
+            result.append(" Flush");
+        } else if (isStraight()) {
+            result.append(" Straight");
+        } else if (isThreeOfAKind()) {
+            result.append(" Three of a kind");
+        } else if (isTwoPairs()) {
+            result.append(" Two pairs");
+        } else if (isPair()) {
+            result.append(" Pair");
+        } else if (isHighCard()) {
+            result.append(" High card");
+        }
         return result.toString();
+    }
+
+    public boolean isHighCard() {
+        return !isStraightFlush() && !isFourOfAKind() && !isFullHouse() && !isFlush() && !isStraight() && !isThreeOfAKind() && !isTwoPairs() && !isPair();
+    }
+
+    public boolean isPair() {
+        HashMap<Integer, Integer> sameCardRankCount = countSameCardRank();
+        for (Integer count : sameCardRankCount.values()) {
+            if (count == 2) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isTwoPairs() {
+        HashMap<Integer, Integer> sameCardRankCount = countSameCardRank();
+        int occurrences = 0;
+        for (Integer count : sameCardRankCount.values()) {
+            occurrences = occurrences + 1;
+            if (count == 2 && occurrences == 2) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isThreeOfAKind() {
+        HashMap<Integer, Integer> sameCardRankCount = countSameCardRank();
+        for (Integer count : sameCardRankCount.values()) {
+            if (count == 3) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public boolean isStraight() {
+        Collections.sort(getHand());
+        for (int i = 0; i < 4; i++) {
+            if (getHand().get(i).getRank() + 1 != getHand().get(i + 1).getRank()) {
+                return false;
+            }
+        }
+        return true;
     }
 
     public boolean isFlush() {
@@ -63,14 +130,18 @@ public class Hand {
         return heartCounter == 5 || diamondCounter == 5 || spadesCounter == 5 || clubsCounter == 5;
     }
 
-    public boolean isStraight() {
-        Collections.sort(getHand());
-        for (int i = 0; i < 4; i++) {
-            if (getHand().get(i).getRank() + 1 != getHand().get(i + 1).getRank()) {
-                return false;
+    public boolean isFullHouse() {
+        return isPair() && isThreeOfAKind();
+    }
+
+    public boolean isFourOfAKind() {
+        HashMap<Integer, Integer> sameCardRankCount = countSameCardRank();
+        for (Integer count : sameCardRankCount.values()) {
+            if (count == 4) {
+                return true;
             }
         }
-        return true;
+        return false;
     }
 
     public boolean isStraightFlush() {
@@ -91,57 +162,5 @@ public class Hand {
 
         }
         return sameCardRankCount;
-    }
-
-    public boolean isFourOfAKind() {
-        HashMap<Integer, Integer> sameCardRankCount = countSameCardRank();
-        for (Integer count : sameCardRankCount.values()) {
-            if (count == 4) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean isThreeOfAKind() {
-        HashMap<Integer, Integer> sameCardRankCount = countSameCardRank();
-        for (Integer count : sameCardRankCount.values()) {
-            if (count == 3) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    public boolean isPair() {
-        HashMap<Integer, Integer> sameCardRankCount = countSameCardRank();
-        for (Integer count : sameCardRankCount.values()) {
-            if (count == 2) {
-                return true;
-            }
-        }
-        return false;
-    }
-    public boolean isTwoPairs() {
-        HashMap<Integer, Integer> sameCardRankCount = countSameCardRank();
-        int occurrences = 0;
-        for (Integer count : sameCardRankCount.values()) {
-            occurrences = occurrences + 1;
-            if (count == 2 && occurrences == 2) {
-                return true;
-            }
-        }
-        return false;
-    }
-    public boolean isFullHouse() {
-        HashMap<Integer, Integer> sameCardRankCount = countSameCardRank();
-        int occurrences = 0;
-        for (Integer count : sameCardRankCount.values()) {
-            occurrences = occurrences + 1;
-            if (count == 3 && occurrences == 1) {
-                    return true;
-            }
-        }
-        return false;
     }
 }
