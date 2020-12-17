@@ -81,14 +81,13 @@ public class Hand {
 
     public boolean isTwoPairs() {
         HashMap<Integer, Integer> sameCardRankCount = countSameCardRank();
-        int occurrences = 0;
+        int pairCounter = 0;
         for (Integer count : sameCardRankCount.values()) {
-            occurrences = occurrences + 1;
-            if (count == 2 && occurrences == 2) {
-                return true;
+            if (count == 2) {
+                pairCounter++;
             }
         }
-        return false;
+        return pairCounter == 2;
     }
 
     public boolean isThreeOfAKind() {
