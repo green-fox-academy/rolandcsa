@@ -1,3 +1,5 @@
+package tictactoe;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -12,13 +14,13 @@ public class TicTacToe {
         // We have provided you some example files (draw.txt, win-x.txt, win-o.txt)
         // Return "X", "O" or "Draw" based on the input file
 
-        System.out.println(ticTacResult("win-o.txt"));
+        System.out.println(ticTacResult("tictactoe/win-o.txt"));
         // Should print "O"
 
-        System.out.println(ticTacResult("win-x.txt"));
+        System.out.println(ticTacResult("tictactoe/win-x.txt"));
         // Should print "X"
 
-        System.out.println(ticTacResult("draw.txt"));
+        System.out.println(ticTacResult("tictactoe/draw.txt"));
         // Should print "Draw"
     }
 
