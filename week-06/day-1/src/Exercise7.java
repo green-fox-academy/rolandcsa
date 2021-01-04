@@ -6,8 +6,12 @@ import java.util.stream.Collectors;
 
 public class Exercise7 {
     public static void main(String[] args) {
+        System.out.println(findCorrectStrings('N'));
+    }
+
+    public static List<String> findCorrectStrings(Character c) {
         List<String> cities = Arrays.asList("ROME", "LONDON", "NAIROBI", "CALIFORNIA", "ZURICH", "NEW DELHI", "AMSTERDAM", "ABU DHABI", "PARIS");
 
-        System.out.println(cities.stream().collect(Collectors.groupingBy(word -> word.charAt(0))));
+        return cities.stream().filter(x -> x.charAt(0) == c).collect(Collectors.toList());
     }
 }
