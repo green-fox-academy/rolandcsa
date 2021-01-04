@@ -1,3 +1,5 @@
+// Write a Stream Expression to get the even numbers from the following list:
+
 import java.util.Arrays;
 import java.util.List;
 
