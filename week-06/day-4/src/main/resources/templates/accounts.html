@@ -8,8 +8,10 @@
 <body>
 <table>
     <tr th:each="character: ${characters}">
+        <td th:text="${characterStat.index+1}"></td>
         <td th:text="${character.name}"></td>
-        <td th:text="${character.balance}"></td>
+        <td th:text="${character.getBalanceFormatted()}"></td>
+        <td th:text="${character.getCurrency}"></td>
         <td th:text="${character.animalType}"></td>
 </table>
 </body>

@@ -10,13 +10,14 @@ import java.util.List;
 
 @Controller
 public class MainController {
-    BankAccount simba = new BankAccount("Simba", 2000, "lion");
+    BankAccount simba = new BankAccount("Simba", 2000.00, "lion");
 
     @GetMapping("/show")
     public String show(Model model) {
         model.addAttribute("name", simba.getName());
-        model.addAttribute("balance", simba.getBalance());
+        model.addAttribute("balance", simba.getBalanceFormatted());
         model.addAttribute("animalType", simba.getAnimalType());
+        model.addAttribute("index", simba.getCurrency());
         return "show";
     }
 
@@ -29,11 +30,11 @@ public class MainController {
     @GetMapping("/accounts")
     public String accounts(Model model) {
         List<BankAccount> characters = new ArrayList<>();
-        characters.add(new BankAccount("Simba", 2000, "lion"));
-        characters.add(new BankAccount("Timon", 1500, "mongoose"));
-        characters.add(new BankAccount("Pumba", 1000, "mongoose"));
-        characters.add(new BankAccount("Nala", 3000, "lion"));
-        characters.add(new BankAccount("Mufasa", 1750, "lion"));
+        characters.add(new BankAccount("Simba", 2000.00, "lion"));
+        characters.add(new BankAccount("Timon", 1500.00, "mongoose"));
+        characters.add(new BankAccount("Pumba", 1000.00, "mongoose"));
+        characters.add(new BankAccount("Nala", 3000.00, "lion"));
+        characters.add(new BankAccount("Mufasa", 1750.00, "lion"));
         model.addAttribute("characters", characters);
         return "accounts";
     }
