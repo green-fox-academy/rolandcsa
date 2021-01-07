@@ -7,7 +7,7 @@
 </head>
 <body>
 <table>
-    <tr th:each="character: ${characters}">
+    <tr th:each="character: ${characters}" th:style="'color:' + ${character.getColor()}">
         <td th:text="${characterStat.index+1}"></td>
         <td th:text="${character.name}"></td>
         <td th:text="${character.getBalanceFormatted()}"></td>
