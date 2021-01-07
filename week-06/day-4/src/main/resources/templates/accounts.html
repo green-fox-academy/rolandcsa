@@ -13,6 +13,7 @@
         <td th:text="${character.getBalanceFormatted()}"></td>
         <td th:text="${character.getCurrency}"></td>
         <td th:text="${character.animalType}"></td>
+        <td th:text="${character.isGood} ? 'Good Person' : 'Bad Person'"></td>
 </table>
 </body>
 </html>
