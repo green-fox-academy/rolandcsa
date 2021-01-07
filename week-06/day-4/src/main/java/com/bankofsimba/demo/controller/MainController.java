@@ -16,4 +16,9 @@ public class MainController {
         model.addAttribute("animalType", simba.getAnimalType());
         return "show";
     }
+    @GetMapping("/text")
+    public String text(Model model){
+        model.addAttribute("text", "This is an <em>HTML</em> text. <b>Enjoy yourself!</b>");
+        return "text";
+    }
 }

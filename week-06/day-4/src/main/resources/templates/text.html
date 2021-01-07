@@ -5,7 +5,7 @@
     <link rel="stylesheet" th:href="@{/style.css}" />
     <meta charset="utf-8" />
 </head>
-<body>
-<p th:text="'Name: ' + ${name} + ' Balance: ' + ${balance} + '.00 Zebra Type: ' + ${animalType}" ></p>
+<p>
+<p th:utext = "${text}" ></p>
 </body>
 </html>
