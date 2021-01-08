@@ -7,6 +7,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Controller
 public class MainController {
@@ -22,7 +23,14 @@ public class MainController {
 
     @GetMapping("/")
     public String index(Model model) {
-        model.addAttribute(shopItemList);
+        model.addAttribute("shopItemList", shopItemList);
         return "index";
+    }
+
+    @GetMapping("/onlyavailable")
+    public String onlyAvailable(Model model) {
+        shopItemList = shopItemList.stream().filter(x -> x.getQuantity() != 0).collect(Collectors.toList());
+        model.addAttribute("shopItemList", shopItemList);
+        return "redirect:/";
     }
 }
