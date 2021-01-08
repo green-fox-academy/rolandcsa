@@ -1,0 +1,35 @@
+<div th:fragment="header">
+    <h1>My shop</h1>
+    <hr>
+
+    <heading>
+        <form method="get" action="/onlyavailable">
+            <button type="submit">ONLY AVAILABLE</button>
+        </form>
+        <form method="get" action="/cheapestfirst">
+            <button type="submit">CHEAPEST FIRST</button>
+        </form>
+        <form method="get" action="/containsnike">
+            <button type="submit">CONTAINS NIKE</button>
+        </form>
+        <form method="get" action="/averagestock">
+            <button type="submit">AVERAGE STOCK</button>
+        </form>
+        <form method="get" action="/mostexpensive">
+            <button type="submit">MOST EXPENSIVE AVAILABLE</button>
+        </form>
+    </heading>
+
+    <br>
+    <br>
+
+    <form>
+        <div>Search for</div>
+        <input type="text" name="search" value="...something like Nike">
+        <button type="submit"> Search</button>
+    </form>
+
+    <br>
+    <br>
+
+</div>

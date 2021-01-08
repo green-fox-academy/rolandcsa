@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Webshop</title>
+    <link rel="stylesheet" th:href="@{/style.css}"/>
+    <meta charset="utf-8"/>
+</head>
+<body>
+<div th:replace="fragments/header::header"></div>
+<p th:text="'The average size of stock is: ' + ${averageStock}"></p>
+</body>
+</html>

@@ -32,3 +32,11 @@ input {
     padding: 8px 20px;
     border-radius: 8px;
 }
+
+form {
+    display: inline-block;
+}
+
+p {
+    font-size: 24px;
+}
