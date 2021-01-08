@@ -42,8 +42,9 @@ public class BankAccount {
     public String getBalanceFormatted() {
         return String.format("%.2f", balance);
     }
-    public String getColor(){
-        if (isKing){
+
+    public String getColor() {
+        if (isKing) {
             return "red";
         }
         return "black";
