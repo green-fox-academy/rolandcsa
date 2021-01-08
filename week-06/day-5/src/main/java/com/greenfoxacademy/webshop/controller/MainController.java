@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.util.*;
 import java.util.stream.Collectors;
@@ -77,8 +78,12 @@ public class MainController {
         model.addAttribute("mostExpensiveName", mostExpensiveName);
         return "/mostexpensive";
     }
+
     @PostMapping("/search")
-    public String search() {
+    public String search(Model model, @RequestParam String searchTerm) {
+        List<ShopItem> foundItems;
+        foundItems = shopItemList.stream().filter(x -> x.getName().contains(searchTerm) || x.getDescription().contains(searchTerm)).collect(Collectors.toList());
+        model.addAttribute("shopItemList", foundItems);
         return "index";
     }
 }
