@@ -4,8 +4,8 @@ import com.greenfoxacademy.webshop.model.ShopItem;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 
-import javax.swing.text.html.Option;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -76,6 +76,10 @@ public class MainController {
         }
         model.addAttribute("mostExpensiveName", mostExpensiveName);
         return "/mostexpensive";
+    }
+    @PostMapping("/search")
+    public String search() {
+        return "index";
     }
 }
 

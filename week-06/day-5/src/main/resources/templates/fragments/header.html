@@ -18,6 +18,9 @@
         <form method="get" action="/mostexpensive">
             <button type="submit">MOST EXPENSIVE AVAILABLE</button>
         </form>
+        <form method="get" action="/">
+            <button type="submit">RESET FILTERS</button>
+        </form>
     </heading>
 
     <br>
@@ -26,7 +29,9 @@
     <form>
         <div>Search for</div>
         <input type="text" name="search" value="...something like Nike">
-        <button type="submit"> Search</button>
+        <form method="post" action="/search">
+        <button type="submit">Search</button>
+        </form>
     </form>
 
     <br>
