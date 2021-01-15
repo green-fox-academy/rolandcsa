@@ -19,10 +19,11 @@ public class MainController {
         model.addAttribute("foxFood", fox.getFood());
         model.addAttribute("foxDrink", fox.getDrink());
         if (fox.getTricks().size() == 0) {
-            model.addAttribute("foxTricks", 0);
+            model.addAttribute("foxTrickNumber", 0);
         } else {
-            model.addAttribute("foxTricks", fox.getTricks().size());
+            model.addAttribute("foxTrickNumber", fox.getTricks().size());
         }
+        model.addAttribute("foxTricks", fox.getTricks());
         return "index";
     }
 
