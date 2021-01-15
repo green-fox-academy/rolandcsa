@@ -6,5 +6,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class FoxService {
-    List<Fox> foxes = new ArrayList<>();
+    private List<Fox> foxes = new ArrayList<>();
+
+    public List<Fox> getFoxes() {
+        return foxes;
+    }
 }
