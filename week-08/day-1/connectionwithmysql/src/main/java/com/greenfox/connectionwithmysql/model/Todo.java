@@ -12,7 +12,7 @@ public class Todo {
     private Boolean urgent = false;
     private Boolean done = false;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "assignee_id")
     private Assignee assignee;
 

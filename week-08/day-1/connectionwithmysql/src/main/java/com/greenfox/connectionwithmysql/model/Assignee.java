@@ -12,7 +12,7 @@ public class Assignee {
     private String name;
     private String email;
 
-    @OneToMany
+    @OneToMany(mappedBy = "assignee")
     private List<Todo> todo;
 
     public Assignee() {
