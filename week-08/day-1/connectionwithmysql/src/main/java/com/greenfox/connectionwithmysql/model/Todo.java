@@ -1,9 +1,6 @@
 package com.greenfox.connectionwithmysql.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Todo {
@@ -14,6 +11,10 @@ public class Todo {
     private String title;
     private Boolean urgent = false;
     private Boolean done = false;
+
+    @OneToOne
+    @JoinColumn(name = "assignee_id")
+    private Assignee assignee;
 
     public Todo() {
     }
