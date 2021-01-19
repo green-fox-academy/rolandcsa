@@ -4,13 +4,12 @@ import com.greenfox.connectionwithmysql.model.Assignee;
 import com.greenfox.connectionwithmysql.model.Todo;
 import com.greenfox.connectionwithmysql.repository.AssigneeRepository;
 import com.greenfox.connectionwithmysql.repository.TodoRepository;
+import com.greenfox.connectionwithmysql.service.AssigneeService;
+import com.greenfox.connectionwithmysql.service.TodoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.stream.Collectors;
@@ -19,11 +18,15 @@ import java.util.stream.Collectors;
 public class TodoController {
     private final TodoRepository todoRepository;
     private final AssigneeRepository assigneeRepository;
+    private final AssigneeService assigneeService;
+    private final TodoService todoService;
 
     @Autowired
-    public TodoController(TodoRepository todoRepository, AssigneeRepository assigneeRepository) {
+    public TodoController(TodoRepository todoRepository, AssigneeRepository assigneeRepository, AssigneeService assigneeService, TodoService todoService) {
         this.todoRepository = todoRepository;
         this.assigneeRepository = assigneeRepository;
+        this.assigneeService = assigneeService;
+        this.todoService = todoService;
     }
 
     @GetMapping(value = {"/", "/list"})
@@ -93,7 +96,26 @@ public class TodoController {
     }
 
     @GetMapping("/editassignee/{id}")
-    public String editAssignee(@PathVariable Long id) {
-        return "editassignee/{id}";
+    public String getEditAssignee(@PathVariable Long id, Model model) {
+        model.addAttribute("assignee", assigneeService.getAssigneeById(id));
+        return "editassignee";
+    }
+
+    @PostMapping("/editassignee/{id}")
+    public String postEditAssignee(@PathVariable Long id, @ModelAttribute Assignee assignee) {
+        assigneeService.editAssignee(id, assignee);
+        return "redirect:/listofassignees";
+    }
+
+    @GetMapping("/edittodo/{id}")
+    public String getEditTodo(@PathVariable Long id, Model model) {
+        model.addAttribute("todo", todoService.getTodoById(id));
+        return "edittodo";
+    }
+
+    @PostMapping("/edittodo/{id}")
+    public String postEditTodo(@PathVariable Long id, @ModelAttribute Todo todo) {
+        todoService.editTodo(id, todo);
+        return "redirect:/";
     }
 }

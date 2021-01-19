@@ -38,4 +38,20 @@ public class Todo {
     public Boolean getDone() {
         return done;
     }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public void setUrgent(Boolean urgent) {
+        this.urgent = urgent;
+    }
+
+    public void setDone(Boolean done) {
+        this.done = done;
+    }
 }

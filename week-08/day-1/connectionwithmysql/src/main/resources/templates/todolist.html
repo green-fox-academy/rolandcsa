@@ -22,12 +22,14 @@
         <th>Urgent</th>
         <th>Done</th>
         <th></th>
+        <th></th>
     </tr>
     <tr th:each="todo:${todos}">
         <td th:text="${todo.getId()}"></td>
         <td th:text="${todo.getTitle()}"></td>
         <td th:text="${todo.getUrgent()}"></td>
         <td th:text="${todo.getDone()}"></td>
+        <td><a th:href="'/edittodo/' + ${todo.getId()}">Edit</a></td>
         <td><a th:href="'/deletetodo/' + ${todo.getId()}">Delete</a></td>
     </tr>
 </table>
