@@ -9,7 +9,6 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.sql.Timestamp;
-import java.text.DateFormat;
 import java.util.Date;
 
 @Getter
@@ -24,10 +23,12 @@ public class Post {
     private String title;
     private String url;
     private Integer rating = 0;
-    private Date date = new Date();
+    private Timestamp time;
 
     public Post(String title, String url) {
         this.title = title;
         this.url = url;
+        Date date = new Date();
+        this.time = new Timestamp(date.getTime());
     }
 }
