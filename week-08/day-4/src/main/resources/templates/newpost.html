@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" th:href="@{/style.css}"/>
+    <title>Reddit</title>
+</head>
+<body>
+<h1>Create new post</h1>
+<form method="post" action="/newpost">
+    <label>Title:</label>
+    <input type="text" id="title" name="title">
+    <label>Url:</label>
+    <input type="text" id="url" name="url">
+    <button type="submit">Submit</button>
+</form>
+</body>
+</html>
