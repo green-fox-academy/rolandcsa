@@ -26,7 +26,11 @@ public class PostService {
         return postRepository.findById(id);
     }
     public void upvote(Optional<Post> post){
-        post.ifPresent(value -> value.setRating(value.getRating() + 1));
-        postRepository.save(post.get());
+        post.ifPresent(x -> x.setRating(x.getRating() + 1));
+        post.ifPresent(postRepository::save);
+    }
+    public void downvote(Optional<Post> post){
+        post.ifPresent(x -> x.setRating(x.getRating() - 1));
+        post.ifPresent(postRepository::save);
     }
 }

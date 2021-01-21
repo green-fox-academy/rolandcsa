@@ -8,6 +8,9 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.sql.Timestamp;
+import java.text.DateFormat;
+import java.util.Date;
 
 @Getter
 @Setter
@@ -21,6 +24,7 @@ public class Post {
     private String title;
     private String url;
     private Integer rating = 0;
+    private Date date = new Date();
 
     public Post(String title, String url) {
         this.title = title;

@@ -13,8 +13,9 @@
     <tr th:each="post:${postList}">
         <td th:text="${post.getRating()}"></td>
         <td><a th:href="'/upvote/' + ${post.getId()}">+</a></td>
-        <td><a href="/downvote">-</a></td>
+        <td><a th:href="'/downvote/' + ${post.getId}">-</a></td>
         <td><a th:href="${post.getUrl()}" target="_blank" th:text="${post.getTitle()}"></a></td>
+        <td th:text="${post.getDate()}"></td>
     </tr>
 </table>
 </body>

@@ -42,4 +42,12 @@ public class MainController {
         }
         return "redirect:/";
     }
+    @GetMapping("/downvote/{id}")
+    public String downvote(@PathVariable Long id){
+        Optional<Post> optionalPost = postService.findById(id);
+        if (optionalPost.isPresent()){
+            postService.downvote(optionalPost);
+        }
+        return "redirect:/";
+    }
 }
