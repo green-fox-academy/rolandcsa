@@ -1,7 +1,6 @@
 package com.greenfox.reddit.controller;
 
 import com.greenfox.reddit.model.Post;
-import com.greenfox.reddit.repository.PostRepository;
 import com.greenfox.reddit.service.PostService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -9,16 +8,15 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Optional;
 
 @Controller
 public class MainController {
     private final PostService postService;
-    private final PostRepository postRepository;
 
     @Autowired
-    public MainController(PostService postService, PostRepository postRepository) {
+    public MainController(PostService postService) {
         this.postService = postService;
-        this.postRepository = postRepository;
     }
 
     @GetMapping("/")
@@ -36,10 +34,12 @@ public class MainController {
         postService.createNewPost(post.getTitle(), post.getUrl());
         return "redirect:/";
     }
-    @PostMapping("/increaserating")
-    @ResponseBody
-    public String increaseRating(@ModelAttribute Post post){
-        post.increaseRating(post);
+    @GetMapping("/upvote/{id}")
+    public String upvote(@PathVariable Long id){
+        Optional<Post> optionalPost = postService.findById(id);
+        if (optionalPost.isPresent()){
+            postService.upvote(optionalPost);
+        }
         return "redirect:/";
     }
 }

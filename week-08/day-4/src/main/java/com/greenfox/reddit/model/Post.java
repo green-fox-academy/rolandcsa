@@ -26,7 +26,4 @@ public class Post {
         this.title = title;
         this.url = url;
     }
-    public void increaseRating(Post post){
-        post.setRating(rating++);
-    }
 }
