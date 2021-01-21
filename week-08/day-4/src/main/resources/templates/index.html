@@ -18,5 +18,7 @@
         <td th:text="${post.getTime()}"></td>
     </tr>
 </table>
+<p>Pages:</p>
+<a th:each="number:${numberOfPages}" th:text="${number}" th:href="'/?page=' + ${number}"></a>
 </body>
 </html>

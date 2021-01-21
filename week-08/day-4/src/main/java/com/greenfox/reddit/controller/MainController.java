@@ -7,6 +7,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.Optional;
 
 @Controller
@@ -19,8 +20,15 @@ public class MainController {
     }
 
     @GetMapping("/")
-    public String index(Model model) {
-        model.addAttribute("postList", postService.trendingPosts());
+    public String index(Model model, @RequestParam(required = false) Integer page) {
+        List<Post> postList;
+        if (page == null) {
+            postList = postService.postPerPage(0);
+        } else {
+            postList = postService.postPerPage(page - 1);
+        }
+        model.addAttribute("numberOfPages", postService.numberOfPages());
+        model.addAttribute("postList", postList);
         return "index";
     }
 
