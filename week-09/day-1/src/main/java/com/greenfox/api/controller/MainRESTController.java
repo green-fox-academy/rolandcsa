@@ -3,15 +3,15 @@ package com.greenfox.api.controller;
 import com.greenfox.api.model.appenda.AppendA;
 import com.greenfox.api.model.doubling.Doubling;
 import com.greenfox.api.model.doubling.ErrorDoubling;
+import com.greenfox.api.model.dountil.DoUntil;
+import com.greenfox.api.model.dountil.DoUntilResult;
+import com.greenfox.api.model.dountil.ErrorDoUntil;
 import com.greenfox.api.model.greeter.ErrorMissingName;
 import com.greenfox.api.model.greeter.ErrorMissingNameAndTitle;
 import com.greenfox.api.model.greeter.ErrorMissingTitle;
 import com.greenfox.api.model.greeter.Greeter;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 public class MainRESTController {
@@ -36,12 +36,21 @@ public class MainRESTController {
         }
         return ResponseEntity.ok(new Greeter(name, title));
     }
+
     @GetMapping("/appenda/{appendable}")
     public ResponseEntity<AppendA> appenda(@PathVariable String appendable) {
         AppendA appendA = new AppendA(appendable);
         if (appendable == null) {
-           return ResponseEntity.notFound().build();
+            return ResponseEntity.notFound().build();
         }
         return ResponseEntity.ok(appendA);
+    }
+
+    @PostMapping("/dountil/{action}")
+    public ResponseEntity<?> dountil(@PathVariable String action, @RequestBody DoUntil doUntil) {
+        if (action.equals("sum") || action.equals("factor")) {
+            return ResponseEntity.ok(new DoUntilResult(action, doUntil.getUntil()));
+        }
+        return ResponseEntity.ok(new ErrorDoUntil());
     }
 }
