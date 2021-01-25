@@ -1,4 +1,4 @@
-package com.greenfox.api.model;
+package com.greenfox.api.model.doubling;
 
 import lombok.Getter;
 import lombok.Setter;

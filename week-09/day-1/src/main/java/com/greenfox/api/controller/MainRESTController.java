@@ -1,7 +1,11 @@
 package com.greenfox.api.controller;
 
-import com.greenfox.api.model.Doubling;
-import com.greenfox.api.model.Error;
+import com.greenfox.api.model.doubling.Doubling;
+import com.greenfox.api.model.doubling.ErrorDoubling;
+import com.greenfox.api.model.greeter.ErrorMissingName;
+import com.greenfox.api.model.greeter.ErrorMissingNameAndTitle;
+import com.greenfox.api.model.greeter.ErrorMissingTitle;
+import com.greenfox.api.model.greeter.Greeter;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -15,6 +19,19 @@ public class MainRESTController {
         if (input != null) {
             return ResponseEntity.ok(new Doubling(input));
         }
-        return ResponseEntity.ok(new Error());
+        return ResponseEntity.ok(new ErrorDoubling());
+    }
+
+    @GetMapping("/greeter")
+    public ResponseEntity<?> greeter(@RequestParam(required = false) String name, @RequestParam(required = false) String title) {
+        if (name == null || title == null) {
+            if (name == null && title == null) {
+                return ResponseEntity.badRequest().body(new ErrorMissingNameAndTitle());
+            }
+            if (title == null) {
+                return ResponseEntity.badRequest().body(new ErrorMissingTitle());
+            }
+        }
+        return ResponseEntity.ok(new Greeter(name, title));
     }
 }
