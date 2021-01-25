@@ -1,6 +1,10 @@
 package com.greenfox.api.controller;
 
 import com.greenfox.api.model.appenda.AppendA;
+import com.greenfox.api.model.arrayhandler.ArrayHandler;
+import com.greenfox.api.model.arrayhandler.ArrayHandlerError;
+import com.greenfox.api.model.arrayhandler.ArrayHandlerResult;
+import com.greenfox.api.model.arrayhandler.ArrayHandlerResultArray;
 import com.greenfox.api.model.doubling.Doubling;
 import com.greenfox.api.model.doubling.ErrorDoubling;
 import com.greenfox.api.model.dountil.DoUntil;
@@ -51,5 +55,16 @@ public class MainRESTController {
             return ResponseEntity.ok(new DoUntilResult(action, doUntil.getUntil()));
         }
         return ResponseEntity.ok(new ErrorDoUntil());
+    }
+
+    @PostMapping("/arrays")
+    public ResponseEntity<?> arrayHandler(@RequestBody ArrayHandler arrayHandler) {
+        if (arrayHandler.getWhat().equals("sum") || arrayHandler.getWhat().equals("multiply")) {
+            return ResponseEntity.ok(new ArrayHandlerResult(arrayHandler));
+        }
+        if (arrayHandler.getWhat().equals("double")) {
+            return ResponseEntity.ok(new ArrayHandlerResultArray(arrayHandler));
+        }
+        return ResponseEntity.ok(new ArrayHandlerError());
     }
 }
