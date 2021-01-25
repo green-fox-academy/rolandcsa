@@ -6,7 +6,6 @@ import com.greenfox.api.model.doubling.ErrorDoubling;
 import com.greenfox.api.model.dountil.DoUntil;
 import com.greenfox.api.model.dountil.DoUntilResult;
 import com.greenfox.api.model.dountil.ErrorDoUntil;
-import com.greenfox.api.model.greeter.ErrorMissingName;
 import com.greenfox.api.model.greeter.ErrorMissingNameAndTitle;
 import com.greenfox.api.model.greeter.ErrorMissingTitle;
 import com.greenfox.api.model.greeter.Greeter;
