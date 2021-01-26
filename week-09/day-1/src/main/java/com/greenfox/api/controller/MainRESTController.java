@@ -16,6 +16,7 @@ import com.greenfox.api.model.greeter.ErrorMissingNameAndTitle;
 import com.greenfox.api.model.greeter.ErrorMissingTitle;
 import com.greenfox.api.model.greeter.Greeter;
 import com.greenfox.api.model.logentries.LogEntries;
+import com.greenfox.api.model.logentries.LogEntriesJson;
 import com.greenfox.api.model.logentries.LogEntriesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -90,5 +91,10 @@ public class MainRESTController {
         }
         logEntriesService.newEntry(new LogEntries("/arrays", objectMapper.writeValueAsString(arrayHandler)));
         return ResponseEntity.ok(new ArrayHandlerError());
+    }
+
+    @GetMapping("/log")
+    public ResponseEntity<?> log() {
+        return ResponseEntity.ok(new LogEntriesJson(logEntriesService.findAll(), logEntriesService.findAll().size()));
     }
 }
