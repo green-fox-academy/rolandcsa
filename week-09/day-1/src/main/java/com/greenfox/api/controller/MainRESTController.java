@@ -16,8 +16,8 @@ import com.greenfox.api.model.greeter.ErrorMissingNameAndTitle;
 import com.greenfox.api.model.greeter.ErrorMissingTitle;
 import com.greenfox.api.model.greeter.Greeter;
 import com.greenfox.api.model.logentries.LogEntries;
-import com.greenfox.api.model.logentries.LogEntriesJson;
-import com.greenfox.api.model.logentries.LogEntriesService;
+import com.greenfox.api.model.logentries.LogEntriesRequestDTO;
+import com.greenfox.api.service.LogEntriesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -95,6 +95,6 @@ public class MainRESTController {
 
     @GetMapping("/log")
     public ResponseEntity<?> log() {
-        return ResponseEntity.ok(new LogEntriesJson(logEntriesService.findAll(), logEntriesService.findAll().size()));
+        return ResponseEntity.ok(new LogEntriesRequestDTO(logEntriesService.findAll(), logEntriesService.findAll().size()));
     }
 }

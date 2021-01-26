@@ -1,5 +1,7 @@
-package com.greenfox.api.model.logentries;
+package com.greenfox.api.service;
 
+import com.greenfox.api.model.logentries.LogEntries;
+import com.greenfox.api.repository.LogEntriesRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

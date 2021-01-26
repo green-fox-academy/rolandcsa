@@ -10,13 +10,13 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
-public class LogEntriesJson {
+public class LogEntriesRequestDTO {
     @JsonProperty(value = "entries")
     private List<LogEntries> logEntries;
     @JsonProperty(value = "entry_count")
     private Integer entryCount;
 
-    public LogEntriesJson(List<LogEntries> logEntries, Integer entryCount) {
+    public LogEntriesRequestDTO(List<LogEntries> logEntries, Integer entryCount) {
         this.logEntries = logEntries;
         this.entryCount = entryCount;
     }
