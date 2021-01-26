@@ -1,6 +1,5 @@
 package com.greenfox.api.controller;
 
-import ch.qos.logback.core.pattern.util.RegularEscapeUtil;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.greenfox.api.model.appenda.AppendA;
@@ -18,9 +17,6 @@ import com.greenfox.api.model.greeter.ErrorMissingTitle;
 import com.greenfox.api.model.greeter.Greeter;
 import com.greenfox.api.model.logentries.LogEntries;
 import com.greenfox.api.model.logentries.LogEntriesRequestDTO;
-import com.greenfox.api.model.sith.Sith;
-import com.greenfox.api.model.sith.SithError;
-import com.greenfox.api.model.sith.SithResponse;
 import com.greenfox.api.service.LogEntriesService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
