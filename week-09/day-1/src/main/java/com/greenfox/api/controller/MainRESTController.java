@@ -61,7 +61,6 @@ public class MainRESTController {
     public ResponseEntity<AppendA> appenda(@PathVariable String appendable) {
         AppendA appendA = new AppendA(appendable);
         if (appendable == null) {
-            logEntriesService.newEntry(new LogEntries("/appenda", "appendable=" + appendable));
             return ResponseEntity.notFound().build();
         }
         logEntriesService.newEntry(new LogEntries("/appenda/{appendable}", "appendable=" + appendable));
