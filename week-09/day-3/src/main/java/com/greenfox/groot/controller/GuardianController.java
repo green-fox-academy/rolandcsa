@@ -1,5 +1,6 @@
 package com.greenfox.groot.controller;
 
+import com.greenfox.groot.model.Arrow;
 import com.greenfox.groot.model.Response;
 import com.greenfox.groot.model.ResponseError;
 import org.springframework.http.ResponseEntity;
@@ -15,5 +16,15 @@ public class GuardianController {
             return ResponseEntity.badRequest().body(new ResponseError());
         }
         return ResponseEntity.ok(new Response(message));
+    }
+
+    @GetMapping("/yondu")
+    public ResponseEntity<?> yondu(@RequestParam(required = false) Double distance, @RequestParam(required = false) Double time) {
+        if (distance == null || time == null) {
+            return ResponseEntity.badRequest().body(new ResponseError());
+        } else if (time == 0.0) {
+            return ResponseEntity.ok(new Arrow(distance, time));
+        }
+        return ResponseEntity.ok(new Arrow(distance, time));
     }
 }

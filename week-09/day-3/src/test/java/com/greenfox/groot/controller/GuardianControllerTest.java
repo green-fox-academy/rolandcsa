@@ -23,7 +23,7 @@ public class GuardianControllerTest {
     private MockMvc mockMvc;
 
     @Test
-    public void getGrootWithMessage() throws Exception {
+    public void getGrootWithParameter() throws Exception {
         String message = "somemessage";
         mockMvc.perform(get("/groot?message=" + message))
                 .andExpect(status().isOk())
@@ -33,10 +33,42 @@ public class GuardianControllerTest {
     }
 
     @Test
-    public void getGrootWithoutMessage() throws Exception {
+    public void getGrootWithoutParameter() throws Exception {
         mockMvc.perform(get("/groot"))
                 .andExpect(status().isBadRequest())
                 .andExpect(jsonPath("error", is("I am Groot!")))
+                .andDo(print());
+    }
+
+    @Test
+    public void getYonduWithParameters() throws Exception {
+        double distance = 100.0;
+        double time = 10.0;
+        mockMvc.perform(get("/yondu?distance=" + distance + "&time=" + time))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("distance", is(distance)))
+                .andExpect(jsonPath("time", is(time)))
+                .andExpect(jsonPath("speed", is(distance / time)))
+                .andDo(print());
+    }
+
+    @Test
+    public void getYounduWithoutParameters() throws Exception {
+        mockMvc.perform(get("/yondu"))
+                .andExpect(status().isBadRequest())
+                .andExpect(jsonPath("error", is("I am Groot!")))
+                .andDo(print());
+    }
+
+    @Test
+    public void getYonduTimeIsZero() throws Exception {
+        double distance = 100.0;
+        double time = 0.0;
+        mockMvc.perform(get("/yondu?distance=" + distance + "&time=" + time))
+                .andExpect(status().isOk())
+                .andExpect(jsonPath("distance", is(distance)))
+                .andExpect(jsonPath("time", is(time)))
+                .andExpect(jsonPath("speed", is("Infinity")))
                 .andDo(print());
     }
 }
