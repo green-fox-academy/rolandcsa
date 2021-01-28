@@ -37,6 +37,6 @@ public class GuardianController {
 
     @GetMapping("/rocket/fill")
     public ResponseEntity<?> fillRocket(@RequestParam String caliber, @RequestParam Integer amount) {
-        return ResponseEntity.ok(new FillRocket(caliber, amount, "40%", false));
+        return ResponseEntity.ok(new FillRocket(caliber, amount));
     }
 }
