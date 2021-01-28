@@ -12,7 +12,7 @@ import java.util.List;
 public class CalorieTable {
     private List<Food> foodList;
 
-    public CalorieTable(List<Food> foods) {
-        this.foodList = foods;
+    public CalorieTable(List<Food> foodList) {
+        this.foodList = foodList;
     }
 }

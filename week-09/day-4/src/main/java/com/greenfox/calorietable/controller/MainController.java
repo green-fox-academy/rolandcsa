@@ -18,13 +18,25 @@ public class MainController {
     }
 
     @GetMapping("/drax")
-    public ResponseEntity<?> getFoodList() {
+    public ResponseEntity<CalorieTable> getFoodList() {
         return ResponseEntity.ok(new CalorieTable(foodService.findAll()));
     }
 
     @PostMapping("/drax")
-    public ResponseEntity<Food> createNewFood(@RequestBody(required = false) Food food) {
+    public ResponseEntity<CalorieTable> createNewFood(@RequestBody(required = false) Food food) {
         foodService.createNewFood(food);
-        return new ResponseEntity<>(food, HttpStatus.CREATED);
+        return new ResponseEntity<>(new CalorieTable(foodService.findAll()), HttpStatus.CREATED);
+    }
+
+    @DeleteMapping("/drax/{id}")
+    public ResponseEntity<CalorieTable> deleteFood(@PathVariable Long id) {
+        foodService.deleteFood(id);
+        return ResponseEntity.ok(new CalorieTable(foodService.findAll()));
+    }
+
+    @PutMapping("/drax/{id}")
+    public ResponseEntity<CalorieTable> updateFood(@PathVariable Long id, @RequestBody(required = false) Food food) {
+        foodService.updateFood(id, food);
+        return ResponseEntity.ok(new CalorieTable(foodService.findAll()));
     }
 }
