@@ -17,8 +17,8 @@ public class Rocket {
     private Integer caliber50;
 
     @JsonIgnore
-    public Integer getPercentage() {
-        return (int) ((caliber25 + caliber30 + caliber50) / 12500.0 * 100);
+    public Double getPercentage() {
+        return ((caliber25 + caliber30 + caliber50) / 12500.0 * 100);
     }
 
     @JsonProperty(value = "shipstatus")

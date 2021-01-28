@@ -32,7 +32,7 @@ public class GuardianController {
 
     @GetMapping("/rocket")
     public ResponseEntity<?> rocket() {
-        return ResponseEntity.ok(new Rocket(2000, 1000, 2000));
+        return ResponseEntity.ok(new Rocket(12500, 0, 0));
     }
 
     @GetMapping("/rocket/fill")
