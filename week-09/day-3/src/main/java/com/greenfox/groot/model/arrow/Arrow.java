@@ -1,4 +1,4 @@
-package com.greenfox.groot.model;
+package com.greenfox.groot.model.arrow;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;

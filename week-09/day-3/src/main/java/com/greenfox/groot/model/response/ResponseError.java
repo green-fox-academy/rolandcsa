@@ -1,4 +1,4 @@
-package com.greenfox.groot.model;
+package com.greenfox.groot.model.response;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
