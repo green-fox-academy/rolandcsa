@@ -4,6 +4,7 @@ import com.greenfox.groot.model.arrow.Arrow;
 import com.greenfox.groot.model.response.Response;
 import com.greenfox.groot.model.response.ResponseError;
 import com.greenfox.groot.model.rocket.FillRocket;
+import com.greenfox.groot.model.rocket.FillRocketError;
 import com.greenfox.groot.model.rocket.Rocket;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -36,7 +37,10 @@ public class GuardianController {
     }
 
     @GetMapping("/rocket/fill")
-    public ResponseEntity<?> fillRocket(@RequestParam String caliber, @RequestParam Integer amount) {
+    public ResponseEntity<?> fillRocket(@RequestParam(required = false) String caliber, @RequestParam(required = false) Integer amount) {
+        if (caliber == null || amount == null) {
+            return ResponseEntity.badRequest().body(new FillRocketError());
+        }
         return ResponseEntity.ok(new FillRocket(caliber, amount));
     }
 }
