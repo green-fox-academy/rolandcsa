@@ -29,7 +29,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                         + "where username = ?")
                 .authoritiesByUsernameQuery("select username, authority "
                         + "from authorities "
-                        + "join users on users.username=authorities.user_id "
+                        + "join users on users.authority_id=authorities.id "
                         + "where username = ?");
     }
 

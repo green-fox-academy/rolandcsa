@@ -5,6 +5,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter
 @Setter
@@ -12,9 +13,9 @@ import javax.persistence.*;
 @Entity
 public class Authorities {
     @Id
+    private Long id;
     private String authority;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    private User user;
+    @OneToMany(mappedBy = "authorities")
+    private List<User> user;
 }
