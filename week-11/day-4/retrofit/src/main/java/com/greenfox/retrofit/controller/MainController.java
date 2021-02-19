@@ -1,9 +1,6 @@
 package com.greenfox.retrofit.controller;
 
-import com.greenfox.retrofit.model.AuthenticationRequest;
-import com.greenfox.retrofit.model.AuthenticationResponse;
-import com.greenfox.retrofit.model.MyRetrofit;
-import com.greenfox.retrofit.model.GitHubUser;
+import com.greenfox.retrofit.model.*;
 import com.greenfox.retrofit.util.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -18,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.io.IOException;
+import java.util.List;
 
 @RestController
 public class MainController {
@@ -33,6 +31,11 @@ public class MainController {
     @GetMapping("/")
     public ResponseEntity<GitHubUser> getGitHubUser() throws IOException {
         return ResponseEntity.ok(new MyRetrofit().getUser("rolandcsa"));
+    }
+
+    @GetMapping("/repos")
+    public ResponseEntity<List<GitHubRepo>> getGitHubUserRepos() throws IOException {
+        return ResponseEntity.ok(new MyRetrofit().getUserRepos("rolandcsa"));
     }
 
     @PostMapping("/authenticate")
